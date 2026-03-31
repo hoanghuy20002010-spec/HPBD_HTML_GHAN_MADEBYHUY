@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lovely Surprise</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Be+Vietnam+Pro:wght@400;500;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <div id="app">
+        <section id="quiz-screen" class="screen active pink-bg">
+            <div class="floating-icons" id="floating-icons"></div>
+
+            <h1 class="script-title">Ê Biết Nay Ngày Gì Không ???</h1>
+
+            <div class="main-board" id="main-board">
+                <img class="avatar" src="https://i.ibb.co/j9MTR69F/t-i-xu-ngs.jpg" alt="avatar" />
+                <h2 id="board-title">Bạn bao nhiêu tuổi r nhỉ :></h2>
+
+                <div id="option-row" class="option-row">
+                    <button class="tiny-pill" data-option="1">U16</button>
+                    <button class="tiny-pill" data-option="2">U36</button>
+                    <button class="tiny-pill" data-option="3">U67</button>
+                </div>
+            </div>
+
+            <div id="option-detail" class="detail-card hidden">
+                <img class="small-avatar" src="https://i.ibb.co/j9MTR69F/t-i-xu-ngs.jpg" alt="choice avatar" />
+                <h3 id="detail-title">Ủa nhầm hả con bò 😂</h3>
+                <p id="detail-text">Có bấm lộn k zậy 😆</p>
+                <div class="detail-actions">
+                    <button id="back-option" class="tiny-pill tiny-pill--light">Quay lại</button>
+                    <button id="pick-option" class="tiny-pill">Chọn ô này</button>
+                </div>
+            </div>
+
+            <img id="big-cat" class="big-cat hidden" src="https://i.imgur.com/8Km9tLL.jpg" alt="cat" />
+
+            <h2 class="script-subtitle">Cho mi 3s để mở ra coi đó 🥺</h2>
+
+            <div class="main-actions">
+                <button id="open-btn" class="main-pill">Coi gì đó 😏</button>
+                <button id="run-btn" class="main-pill">Không thì cút 😏</button>
+            </div>
+
+            <div id="tease-popup" class="tease-popup hidden">
+                <h4>Ê giỡn á 😳</h4>
+                <p>Bấm mở quà đi mà, né nữa nè 😅</p>
+                <button id="close-tease" class="tiny-pill">OK nè</button>
+            </div>
+        </section>
+
+        <section id="password-screen" class="screen white-bg hidden">
+            <h2 class="pass-title">NHẬP PASS ĐI NGƯỜI ĐẸP</h2>
+            <div class="pass-card">
+                <div class="girl-box">👧🏻</div>
+                <div class="keypad-zone">
+                    <input id="pass-display" class="pass-display" type="password" readonly />
+                    <div class="key-grid" id="key-grid"></div>
+                </div>
+            </div>
+            <p id="pass-msg" class="pass-msg">Mật khẩu gồm 6 số</p>
+        </section>
+
+        <section id="matrix-screen" class="screen hidden">
+            <canvas id="matrix-canvas"></canvas>
+            <div id="gift-btn-wrap" class="gift-btn-wrap hidden">
+                <button id="gift-btn" class="gift-btn">quà nè</button>
+            </div>
+        </section>
+
+        <section id="galaxy-screen" class="screen hidden">
+            <div id="three-container"></div>
+        </section>
+
+        <div id="scene-transition" class="scene-transition hidden"></div>
+    </div>
+
+    <script src="vendor/three/three.min.js"></script>
+    <script src="vendor/three/OrbitControls.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

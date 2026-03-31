@@ -1,0 +1,380 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --pink: #f60087;
+  --pink-dark: #d90073;
+  --soft: #fff4fb;
+  --text-dark: #212121;
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  font-family: "Be Vietnam Pro", sans-serif;
+  overflow: hidden;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.screen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.screen.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(1.02);
+}
+
+.screen.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.pink-bg {
+  background: radial-gradient(circle at 10% 10%, #fff7fd, #ffeefa 55%, #ffe4f6 100%);
+}
+
+.white-bg {
+  background: #f7f7f7;
+}
+
+.script-title,
+.script-subtitle {
+  font-family: "Pacifico", cursive;
+  color: var(--pink);
+  text-shadow: 0 3px 8px rgba(246, 0, 135, 0.2);
+  text-align: center;
+}
+
+.script-title {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  margin: 0 0 16px;
+  z-index: 4;
+}
+
+.script-subtitle {
+  font-size: clamp(1.7rem, 3vw, 2.8rem);
+  margin: 26px 0 16px;
+  z-index: 4;
+}
+
+.main-board,
+.detail-card {
+  width: min(380px, 90vw);
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.14);
+  text-align: center;
+  padding: 22px 18px;
+  z-index: 4;
+}
+
+.avatar,
+.small-avatar {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #ffd7eb;
+}
+
+.main-board h2,
+.detail-card h3 {
+  color: var(--pink-dark);
+  margin: 12px 0 14px;
+  font-family: "Pacifico", cursive;
+  font-size: 1.8rem;
+}
+
+.option-row,
+.detail-actions,
+.main-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.tiny-pill,
+.main-pill,
+.gift-btn {
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #ff2ca4, #f00084);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 7px 16px rgba(246, 0, 135, 0.35);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, left 0.6s ease, top 0.6s ease;
+}
+
+.tiny-pill {
+  padding: 8px 16px;
+  font-size: 0.88rem;
+}
+
+.main-pill {
+  padding: 12px 26px;
+  font-size: 1rem;
+  min-width: 140px;
+}
+
+.tiny-pill:hover,
+.main-pill:hover,
+.gift-btn:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 12px 18px rgba(246, 0, 135, 0.4);
+}
+
+.tiny-pill--light {
+  background: linear-gradient(180deg, #ff7cc3, #ff4bad);
+}
+
+.detail-card {
+  position: relative;
+  margin-top: 12px;
+  z-index: 7;
+}
+
+.detail-card p {
+  margin: 0 0 14px;
+  color: #4e4e4e;
+  line-height: 1.45;
+}
+
+.big-cat {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 6px solid #ff4bad;
+  box-shadow: 0 16px 24px rgba(246, 0, 135, 0.2);
+  z-index: 4;
+}
+
+.main-actions {
+  z-index: 5;
+}
+
+#run-btn.corner {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  transform: scale(0.86);
+  z-index: 30;
+}
+
+.tease-popup {
+  position: fixed;
+  top: 80px;
+  left: 24px;
+  width: 250px;
+  padding: 16px;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+  z-index: 35;
+}
+
+.tease-popup h4 {
+  margin: 0;
+  color: var(--pink);
+  font-family: "Pacifico", cursive;
+  font-size: 1.5rem;
+}
+
+.tease-popup p {
+  margin: 8px 0 14px;
+  color: #4e4e4e;
+}
+
+.floating-icons {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.float-icon {
+  position: absolute;
+  animation: drift linear infinite;
+  opacity: 0.7;
+}
+
+@keyframes drift {
+  from {
+    transform: translateY(30px) rotate(0deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.7;
+  }
+  to {
+    transform: translateY(-120vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.pass-title {
+  font-size: clamp(2.2rem, 4vw, 4rem);
+  margin-bottom: 26px;
+  color: #101010;
+}
+
+.pass-card {
+  width: min(900px, 92vw);
+  min-height: 420px;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.14);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 30px;
+}
+
+.girl-box {
+  width: 260px;
+  height: 260px;
+  border-radius: 16px;
+  background: #fff3f8;
+  display: grid;
+  place-items: center;
+  font-size: 110px;
+  box-shadow: inset 0 0 0 4px #f9d5e7;
+}
+
+.keypad-zone {
+  width: 360px;
+}
+
+.pass-display {
+  width: 100%;
+  height: 66px;
+  border-radius: 12px;
+  border: 3px solid #ececec;
+  font-size: 2rem;
+  text-align: center;
+  letter-spacing: 8px;
+  margin-bottom: 14px;
+}
+
+.key-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.key-grid button {
+  height: 72px;
+  border-radius: 10px;
+  border: none;
+  background: #f2f2f2;
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.key-grid button:active {
+  transform: scale(0.97);
+}
+
+.key-grid button.action {
+  background: #d8d8d8;
+}
+
+.pass-msg {
+  margin-top: 16px;
+  color: #4a4a4a;
+  font-weight: 600;
+}
+
+#matrix-screen {
+  background: #050210;
+}
+
+#matrix-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.gift-btn-wrap {
+  position: absolute;
+  bottom: 18%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 8;
+}
+
+.gift-btn {
+  padding: 14px 30px;
+  font-size: 1.1rem;
+}
+
+#galaxy-screen {
+  background: #03070f;
+}
+
+#three-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.scene-transition {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  pointer-events: none;
+  opacity: 0;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.24) 0%, rgba(113, 186, 255, 0.14) 18%, rgba(14, 7, 36, 0.78) 48%, rgba(3, 5, 14, 0.96) 100%),
+    linear-gradient(140deg, rgba(255, 160, 220, 0.18) 0%, rgba(100, 145, 255, 0.12) 40%, rgba(10, 13, 32, 0.88) 100%);
+  backdrop-filter: blur(0px);
+  transition: opacity 520ms ease, backdrop-filter 520ms ease;
+}
+
+.scene-transition.active {
+  opacity: 1;
+  backdrop-filter: blur(7px);
+}
+
+.hidden {
+  display: none !important;
+}
+
+@media (max-width: 760px) {
+  .pass-card {
+    flex-direction: column;
+    gap: 20px;
+    min-height: auto;
+  }
+
+  .girl-box {
+    width: 200px;
+    height: 200px;
+    font-size: 90px;
+  }
+
+  .keypad-zone {
+    width: min(340px, 90vw);
+  }
+}
