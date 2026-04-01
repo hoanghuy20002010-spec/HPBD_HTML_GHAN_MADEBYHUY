@@ -158,7 +158,7 @@ let matrixCols = 0;
 let matrixDrops = [];
 let matrixAnim = null;
 
-const textStages = ['chúc mừng', 'sinh nhật', 'vui vẻ', 'tuổi mới', 'sức khỏe', 'xinh đẹp', 'hạnh phúc','Nhé Con BÒOOO'];
+const textStages = ['chúc mừng', 'sinh nhật', 'vui vẻ', 'tuổi mới', 'sức khỏe', 'xinh đẹp', 'hạnh phúc','Nhé Con BÒOOO', 'còn quà', 'thì hẹn', 'hôm khác nhed=)'];
 let textStageIndex = 0;
 let particleState = [];
 let targetState = [];
